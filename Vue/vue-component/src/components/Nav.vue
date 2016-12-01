@@ -12,9 +12,10 @@
 		data(){
 			return {
 				items:[
-					{name:'走势图',link:'charts'}
+					{name: '折点图',link: 'barCharts'},
+					{name: '饼图', link: 'pieCharts'}
 				],
-				isActive:true
+				isActive:[true,false]
 			}
 		}
 		
@@ -42,22 +43,22 @@
 		width:230px;
 	}
 	.nav-item{
-		
-		color: rgba(0,204,102,.8);
-	    size: 14px;
+	    color: #4cae4c;
 	}
 	.nav-item a{
+		font-size: 14px;
+		color: #4cae4c;
 		padding:0 50px;
 		display: block;
 		text-decoration: none;
 	}
 	.nav-item a:hover {
-	  color: rgba(0,204,102,1);
+	  color: #00cc66;
 	  background-color: #fafafa;
 	  cursor: pointer;
 	}
 	.nav-item a.router-link-active {
-	  color: rgba(0,204,102,1);
+	  color: #00cc66;
 	  background-color: #fafafa;
 	}
 </style> 

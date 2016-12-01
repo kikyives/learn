@@ -6,18 +6,19 @@ Vue.use(VueRouter)
 
 
 //定义路由组件
-const charts = require('./components/charts.vue')
-
+const lineCharts = require('./components/lineCharts.vue')
+const pieCharts = require('./components/pieCharts.vue')
 //定义路由
 const routes = [
-  { path: '/', redirect: '/charts' },
-  { path: '/charts', component: charts}
+  { path: '/', redirect: '/lineCharts' },
+  { path: '/barCharts', component: lineCharts},
+  { path: '/pieCharts', component: pieCharts}
 ]
 
 // 创建router实例
 const router = new VueRouter({
   routes
-})
+}) 
 
 new Vue({
   el: '#app', 
