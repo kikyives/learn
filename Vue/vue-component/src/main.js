@@ -11,7 +11,7 @@ const pieCharts = require('./components/pieCharts.vue')
 //定义路由
 const routes = [
   { path: '/', redirect: '/lineCharts' },
-  { path: '/barCharts', component: lineCharts},
+  { path: '/lineCharts', component: lineCharts},
   { path: '/pieCharts', component: pieCharts}
 ]
 

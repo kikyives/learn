@@ -12,7 +12,7 @@
 		data(){
 			return {
 				items:[
-					{name: '折点图',link: 'barCharts'},
+					{name: '折点图',link: 'lineCharts'},
 					{name: '饼图', link: 'pieCharts'}
 				],
 				isActive:[true,false]
