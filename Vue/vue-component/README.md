@@ -15,4 +15,4 @@ npm run dev
 npm run build
 ```
 
-线上访问地址：
+线上访问地址： (https://github.com/kikyives/learn/tree/gh-pages/Vue/vue-component)
