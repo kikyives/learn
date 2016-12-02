@@ -13,7 +13,8 @@
 			return {
 				items:[
 					{name: '折点图',link: 'lineCharts'},
-					{name: '饼图', link: 'pieCharts'}
+					{name: '环形图', link: 'pieCharts'},
+					{name: 'tab切换', link: 'tabbar'}
 				],
 				isActive:[true,false]
 			}

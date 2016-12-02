@@ -18,7 +18,7 @@
 					text:'学习时间分布情况(小时)',
 					textStyle: {
 						color: '#666',
-			        	fontSize: 12,
+			        	fontSize: 20,
 			        	fontWeight: 500,
 			        	fontFamily:'"Microsoft YaHei","STHeiti","Open Sans",Arial,"Hiragino Sans GB","WenQuanYi Micro Hei",SimSun,sans-serif'
 					},

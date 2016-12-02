@@ -1,6 +1,6 @@
 <template>
 	<footer class="footer">
-		<a href="https://kikyives.github.io">博客</a>
+		<a href="https://kikyives.github.io" target="_bank">博客</a>
 		<p>Copyright © <span>kiky</span> 2016 </p>
 	</footer>
 </template>
