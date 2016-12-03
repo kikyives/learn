@@ -12,11 +12,11 @@
 		data(){
 			return {
 				items:[
-					{name: '折点图',link: 'lineCharts'},
+					{name: '折点图', link: 'lineCharts'},
 					{name: '环形图', link: 'pieCharts'},
-					{name: 'tab切换', link: 'tabbar'}
+					{name: 'tab切换(简单场景)', link: 'tabs'}
 				],
-				isActive:[true,false]
+				isActive:[true,false,false]
 			}
 		}
 		

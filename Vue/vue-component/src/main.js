@@ -9,13 +9,13 @@ Vue.use(VueRouter)
 //定义路由组件
 const lineCharts = require('./components/lineCharts.vue')
 const pieCharts = require('./components/pieCharts.vue')
-const tabbar = require('./components/tabbar.vue')
+const tabs = require('./components/tabs.vue')
 //定义路由
 const routes = [
   { path: '/', redirect: '/lineCharts' },
   { path: '/lineCharts', component: lineCharts},
   { path: '/pieCharts', component: pieCharts},
-  { path: '/tabbar', component: tabbar}
+  { path: '/tabs', component: tabs}
 ]
 
 // 创建router实例
