@@ -14,7 +14,7 @@
 				items:[
 					{name: '折点图', link: 'lineCharts'},
 					{name: '环形图', link: 'pieCharts'},
-					{name: 'tab切换(简单场景)', link: 'tabs'}
+					{name: 'tab切换(简单场景)', link: 'tabSimple'}
 				],
 				isActive:[true,false,false]
 			}

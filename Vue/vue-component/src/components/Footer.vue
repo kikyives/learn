@@ -33,6 +33,6 @@
 		font-size:14px;
 	}
 	.footer p span{
-		color:#4cae4c;
+		color:#00cc66;
 	}
 </style>

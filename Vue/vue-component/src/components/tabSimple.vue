@@ -18,7 +18,7 @@
 	</div> 
 </template> 
 <script>
-	import tabs from './branch/tabbar.vue'
+	import tabs from './branch/tabbar1.vue'
 	export default {
 		data() {
 			return {
