@@ -1,34 +1,36 @@
 <template>
 	<div>
-		<textarea id="inputer" :value='rawtxt' @input='inputting' @scroll='syncStroll' @drop.stop.prevent='dragging' autofocus></textarea>
+		<textarea id="inputer" :value='rawTxt' @input='inputting' @scroll='syncStroll' @drop.stop.prevent='dragging' autofocus></textarea>
 	</div>
 </template>
+
 <script>
 	export default {
 		computed: {
-			rawtxt () {
-				return this.$store.getters.artcleRaw
+			rawTxt () {
+				return this.$store.getters.articleRaw
 			}
 		},
 		methods: {
-			inputting(e) {
+			inputting (e) {
 				this.$store.dispatch('textInput', e.target.value)
 				this.$store.dispatch('saveToCache')
 			},
-			syncStroll(e) {
+			syncStroll (e) {
 				let outputer = document.querySelector('.outputer')
 				outputer.scrollTop = e.target.scrollTop
 			},
-			dragging(e) {
+			dragging (e) {
 				let self = this
-				let dt = e.dataTransfer
-				let fileReader = new FileReader()
+				let dt = e.dataTransfer;
+				let files = dt.files;
+				let fileReader = new FileReader();
 				fileReader.readAsText(files[0], 'UTF-8');
 				fileReader.onloadend = function (e) {
-			        let value = e.target.result
-			        self.$store.dispatch('textInput', value)
-			        self.$store.dispatch('saveToCache')
-			    }
+					let value = e.target.result
+					self.$store.dispatch('textInput', value)
+					self.$store.dispatch('saveToCache')
+				}
 			}
 		}
 	}
