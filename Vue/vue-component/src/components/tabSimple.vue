@@ -5,7 +5,7 @@
 			<transition>
 				<div class="tab-item" v-if="tabData[0].showFlag > 0">
 					{{tabData[0].content}}
-				</div>
+				</div>  
 				<div class="tab-item" v-if="tabData[1].showFlag > 0">
 					{{tabData[1].content}}
 				</div>
@@ -14,13 +14,13 @@
 				</div>
 				<!--<component :is='currentView'></component>-->
 			</transition >
-		</tabs>
+		</tabs> 
 	</div> 
-</template> 
+</template>   
 <script>
 	import tabs from './branch/tabbar1.vue'
 	export default {
-		data() {
+		data() {      
 			return {
 				tabShowFlag: true,
 				tabTitle: 'tab切换(适用于简单场景)，例如渲染一个小片段，数据处理不多',

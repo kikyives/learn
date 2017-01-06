@@ -139,11 +139,11 @@
 	}
 	.prev{
 		left:20px;
-		background:url(../assets/images/prev.png) no-repeat center;
+		background:url(https://kikyives.github.io/learn/Vue/vue-component/src/assets/images/prev.png) no-repeat center;
 	}
 	.next{
 		right:20px;
-		background:url(../assets/images/next.png) no-repeat center;
+		background:url(https://kikyives.github.io/learn/Vue/vue-component/src/assets/images/next.png) no-repeat center;
 	}
 	.cur{
 		cursor: default;

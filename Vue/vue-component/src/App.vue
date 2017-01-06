@@ -8,7 +8,7 @@
     <my-foot></my-foot>
   </div>
 </template>
- 
+  
 <script>
 import myHead from './components/Header'
 import myNav from './components/Nav'
