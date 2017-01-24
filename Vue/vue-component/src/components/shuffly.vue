@@ -53,7 +53,6 @@
 				let _this = this;
 				if(_this.imgId >= 0 && _this.imgId < _this.imgData.length - 1){
 					_this.imgId = parseInt(_this.imgId) + 1;
-					// console.log(_this.imgId)
 				}else if(_this.imgId == 2){
 					alert('已经是最后一张')
 				}
