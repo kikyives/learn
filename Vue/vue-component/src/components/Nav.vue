@@ -2,7 +2,7 @@
 	<div class="nav-list">
 		<ul class="nav-left">
 			<li class="nav-item" v-for="(item,index) in items">
-				<router-link v-bind:to="'/' + item.link" v-bind:class="{active: isActive}">{{item.name}}</router-link>
+				<router-link v-bind:to="'/' + item.link">{{item.name}}</router-link>
 			</li>
 		</ul>
 	</div>
@@ -17,7 +17,7 @@
 					{name: 'tab切换(简单场景)', link: 'tabSimple'},
 					{name: '轮播', link: 'shuffly'}
 				],
-				isActive:[true,false,false,false]
+				// isActive:[true,false,false,false]
 			}
 		}
 		
