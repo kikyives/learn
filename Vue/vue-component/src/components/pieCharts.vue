@@ -15,7 +15,7 @@
 				                {value:50, name:'广发证券'},
 				                {value:50, name:'博时基金'},
 				            ],
-	            colors: ['#59eaff','#4d93ff','#b5a2ff'],//自定义颜色数组
+	            
 				title: {
 					text:'程序猿购买基金调查',
 					left: 'center',
@@ -69,9 +69,7 @@
 								// },{
 								//   offset: 1, color: '#b5a2ff' // 100% 处的颜色
 								// }], false)
-							color() {
-								return colors[i++]
-							}
+							
 	            		}
 		            },
 			    }
@@ -81,6 +79,7 @@
 			drawPie(id) {
 				this.chart = echarts.init(document.getElementById(id))
 				this.chart.setOption({
+					color:['#48cda6','#fd87ab','#11abff','#ffdf33','#968ade'],//自定义颜色数组
 					title: this.title,
 					tooltip: this.tooltip,
 				    legend: {
