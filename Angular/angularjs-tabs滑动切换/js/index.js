@@ -1,0 +1,21 @@
+var myApp=angular.module('myApp',['ngTouch']);
+myApp.controller('myController',function($scope){
+  $scope.activeIndex=0;
+	$scope.changeIndex=function(index){
+		$scope.activeIndex=index;
+	};
+  $scope.swipeLeft=function(){
+      $scope.activeIndex=++$scope.activeIndex;
+      $scope.check();
+    };
+ $scope.swipeRight=function(){
+      $scope.activeIndex=--$scope.activeIndex;
+      $scope.check();
+ };
+ $scope.check=function(){
+      if($scope.activeIndex>3)
+        $scope.activeIndex=0;
+      if($scope.activeIndex<0)
+        $scope.activeIndex=3;
+    }
+})

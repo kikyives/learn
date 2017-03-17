@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8">
+    <title>angularjs Tabs</title>
+    
+    
+    
+    
+        <link rel="stylesheet" href="css/style.css">
+
+    
+    
+    
+  </head>
+
+  <body>
+
+    <script src="http://cdn.bootcss.com/angular.js/1.3.8/angular.min.js"></script>
+<script src="http://cdn.bootcss.com/angular.js/1.3.8/angular-touch.min.js"></script>
+
+<div ng-app='myApp' ng-controller="myController">
+  <div class="type-tabs">
+      <div ng-repeat="item in [1,2,3,4]" ng-click="changeIndex($index)">Tab{{item}}</div>
+    </div>
+    <div class="guid-bar">
+      <div class="guid-bar-content" style="left:{{ 25*activeIndex}}%"></div>
+    </div>
+    <div class="tab-content" ng-swipe-right="swipeRight()" ng-swipe-left="swipeLeft()">
+      <div class="tab-content-inner" style="left:{{ -100*activeIndex}}%">
+        <div class="tab-content-item" ng-repeat="item in [1,2,3,4]" >
+          <br /><br /><br /><br />
+          <h1>Tab{{item}}
+          </h1></div>
+      </div>
+    </div>
+</div>
+    
+        <script src="js/index.js"></script>
+
+    
+    
+    
+  </body>
+</html>
