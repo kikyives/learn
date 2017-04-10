@@ -3,11 +3,11 @@
   <transition name="showRouter">
     <div  @click="isShowControl=true" @touchend="isShowControl=true" class="social">
 
-      <div v-show="isShowMask" class="mask">
+     <!--  <div v-show="isShowMask" class="mask">
         <div class="loading">
           <i class="icon-loading"></i>加载中
         </div>
-      </div>
+      </div> -->
 
       <div class="title">
         <div v-text="date" class="date" ></div>
@@ -15,7 +15,7 @@
       </div>
 
       <div class="img">
-        <img v-bind:src="imgUrl" alt="插画 - microzz.com">
+        <img src="./picInfo.jpg" alt="插画">
         <div class="img-desc" >插画 | {{picInfo}}</div>
       </div>
 
@@ -23,7 +23,7 @@
         <p v-text="forward"></p>
         <div v-text="wordsInfo" class="content-desc"></div>
       </div>
-
+<!-- 
       <transition name="fade">
         <div v-show="isShowControl" class="control">
           <div class="prev">
@@ -38,7 +38,7 @@
           </div>
 
         </div>
-      </transition>
+      </transition> -->
     </div>
   </transition>
 
@@ -53,7 +53,7 @@ export default {
     this.$store.commit('showMiniMusic', false);
   },
   created() {
-    this.getOne();
+    // this.getOne();
   },
   mounted() {
     this.$store.commit('changeLinkBorderIndex', 3);
@@ -62,10 +62,10 @@ export default {
     return {
       date: '',
       volume: '',
-      imgUrl: '',
-      picInfo: '',
+      // imgUrl: './picInfo.jpg',
+      picInfo: 'kikyives',
       forward: '',
-      wordsInfo: '',
+      wordsInfo: '最欢喜的事莫过于我喜欢你刚巧你也喜欢我。很多人说爱情需要经济基础才能走得长久，而我想说的是如果我爱你，你就是最有价值的。我想一切会更好。',
       index: 0,
       isLoading: false,
       isShowMask: true,
@@ -73,33 +73,33 @@ export default {
     }
   },
   methods: {
-    getOne(index = 0) {
-      if (index > 9) {
-        this.index = 9;
-        return ;
-      }
-      if (index < 0) {
-        this.index = 0;
-        return ;
-      }
-      this.isLoading = true;
-      this.axios.get('/api/one/' + index)
-        .then(res => res.data.data.content_list[0])
-        .then(one => {
-          this.date = one.post_date.split(' ')[0].replace(/\-/g, ' / ');
-          this.volume = one.volume;
-          this.imgUrl = one.img_url;
-          this.picInfo = one.pic_info;
-          this.forward = one.forward;
-          this.wordsInfo = one.words_info;
-          this.isLoading = false;
-          this.isShowMask = false;
-          setTimeout(() => {
-            this.isShowControl=false;
-          }, 250)
+    // getOne(index = 0) {
+    //   if (index > 9) {
+    //     this.index = 9;
+    //     return ;
+    //   }
+    //   if (index < 0) {
+    //     this.index = 0;
+    //     return ;
+    //   }
+    //   this.isLoading = true;
+    //   this.axios.get('/api/one/' + index)
+    //     .then(res => res.data.data.content_list[0])
+    //     .then(one => {
+    //       this.date = one.post_date.split(' ')[0].replace(/\-/g, ' / ');
+    //       this.volume = one.volume;
+    //       this.imgUrl = one.img_url;
+    //       this.picInfo = one.pic_info;
+    //       this.forward = one.forward;
+    //       this.wordsInfo = one.words_info;
+    //       this.isLoading = false;
+    //       this.isShowMask = false;
+    //       setTimeout(() => {
+    //         this.isShowControl=false;
+    //       }, 250)
 
-        })
-    }
+    //     })
+    // }
   },
 }
 </script>
@@ -134,7 +134,7 @@ export default {
     flex:7;
     overflow: auto;
     background-color: rgba(0, 0, 0, .05);
-    padding-bottom: 200px;
+    padding-bottom: 30px;
     .mask {
       position: absolute;
       z-index: 2;
@@ -182,9 +182,9 @@ export default {
     }
     .img {
       // flex: 4;
-      padding-bottom: 10px;
-      margin-top: 4px;
-      margin-bottom: 5px;
+      padding-bottom: 8px;
+      // margin-top: 4px;
+      // margin-bottom: 5px;
       img {
         width: 100%;
         height: auto;
@@ -198,7 +198,7 @@ export default {
     }
     .content {
       // flex: 2;
-      padding: 2px 10px;
+      padding: 0px 10px;
       p {
         font-size: 80%;
         color: #000;

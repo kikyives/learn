@@ -36,47 +36,47 @@ apiRoutes.get('/music-data', (req, res) =>{
 })
 
 //Get One's interface
-apiRoutes.get('/one/:page?', function(req, res) {
-  let page = +req.params.page || 0;
-  let url = 'http://v3.wufazhuce.com:8000/api/onelist/idlist/?channel=wdj&version=4.0.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android';
-  let idList = '';
-  let getIdList = new Promise( (resolve, reject) => {
-    http.get(url, response => {
-      response.on('data', data => {
-        idList += data;
-      });
-      response.on('end', () => {
-        resolve(idList)
-      })
-    })
-  });
+// apiRoutes.get('/one/:page?', function(req, res) {
+//   let page = +req.params.page || 0;
+//   let url = 'http://v3.wufazhuce.com:8000/api/onelist/idlist/?channel=wdj&version=4.0.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android';
+//   let idList = '';
+//   let getIdList = new Promise( (resolve, reject) => {
+//     http.get(url, response => {
+//       response.on('data', data => {
+//         idList += data;
+//       });
+//       response.on('end', () => {
+//         resolve(idList)
+//       })
+//     })
+//   });
 
-  let getOne = function(id) {
-    let result = '';
-    let url = 'http://v3.wufazhuce.com:8000/api/onelist/' + id +'/0?channel=wdj&version=4.0.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android';
-    return new Promise( (resolve, reject) => {
-      http.get(url, response => {
-        response.on('data', data => {
-          result += data;
-        });
-        response.on('end', () => {
-          resolve(result);
-        })
-      })
-    });
-  }
+//   let getOne = function(id) {
+//     let result = '';
+//     let url = 'http://v3.wufazhuce.com:8000/api/onelist/' + id +'/0?channel=wdj&version=4.0.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android';
+//     return new Promise( (resolve, reject) => {
+//       http.get(url, response => {
+//         response.on('data', data => {
+//           result += data;
+//         });
+//         response.on('end', () => {
+//           resolve(result);
+//         })
+//       })
+//     });
+//   }
 
-  getIdList.then(idList => JSON.pares(idList).data)
-            .then(data => {
-              return Promise.all( data.map( (item) => {
-                return getOne(item).then(data => JSON.parse(data));
-              }))
-            })
-            .then(list => {
-              list = JSON.parse(JSON.stringify(list));
-              res.json(list[page]);
-            })
-})
+//   getIdList.then(idList => JSON.pares(idList).data)
+//             .then(data => {
+//               return Promise.all( data.map( (item) => {
+//                 return getOne(item).then(data => JSON.parse(data));
+//               }))
+//             })
+//             .then(list => {
+//               list = JSON.parse(JSON.stringify(list));
+//               res.json(list[page]);
+//             })
+// })
 
 apiRoutes.get('/search/:num/:name', (req, res) => {
   let num = req.params.num;
