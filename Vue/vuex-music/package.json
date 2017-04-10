@@ -1,7 +1,7 @@
 {
-  "name": "vuex-share",
+  "name": "vuex-music",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "A music player with vue",
   "author": "kikyives <kikysun0829@gmail.com>",
   "private": true,
   "scripts": {
