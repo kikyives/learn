@@ -1,185 +1,189 @@
 <template lang="html">
-	<div class="play">
-		<div class="header" :style="{backgroundColor: skinColor}">
-			<div class="back">
-				<div class="icon-back"><i @click="back"></i></div>
-			</div>
+  <div class="play">
 
-			<div class="title" @click="isShowMusicList=false">
-				<div class="name">{{audio.name || (musicData[0]&&musicData[0].name) ||  'Powered by kikyivers'}}</div>
-			</div>
+    <div :style="{backgroundColor: skinColor}" class="header">
 
-			<div class="list">
-				<div class="icon-list"><i @click="isShowMusicList=!isShowMusicList"></i></div>
-			</div>
-		</div>
+      <div class="back">
+        <div class="icon-back"><i @click="back"></i></div>
+      </div>
 
-		<div class="content">
-			<transition name="fade">
-				<div class="music-list" v-show="isShowMusicList">
-					<ul>
-						<li v-for="(item, index) of musicData" @click="toggleMusic(index)" :class="{ activeColor: index === audio.index}">{{(index + 1) + '. &nbsp;' + item.name}}</li>
-					</ul>
-				</div>
-			</transition>	
+      <div @click="isShowMusicList=false" class="title">
+        <div class="name">{{audio.name || (musicData[0]&&musicData[0].name) || 'Powered by microzz.com'}}</div>
+      </div>
 
-			<img @click.stop.prevent="isShowSkinColors=false;isShowMusicList=false" :src="audio.musicImgSrc || musicData[0]&&musicData[0].musicImgSrc || defaultImg">
-			<div class="img" @click.stop.prevent="isShowSkinColors=false;isShowMusicList=false">
-				<img :src="audio.musicImgSrc || (musicData[0]&&musicData[0].musicImgSrc) || defaultImg">
-			</div>
-			<div class="progress">
-				<div class="start-time">{{transformTime(now)}}</div>
-				<div class="progress-bar" @click="changeTime($event)" @touchmove="touchMove($event)" @touchend="touchEnd($event)" ref="progressBar">
-					<div class="now" ref="now" :style="{width: (now / nativeAudio.duration).toFixed(3)*100 + '%'}">
-					</div>
-				</div>
-				<div class="end-time" v-text="totalTime"></div>
-			</div>
-			<div class="skin">
-				<transition name="slide-fade">
-					<div class="skin-colors" v-show="isShowSkinColors">
-						<i @click="changeSkinColor('#B72712')" :class="{selected: skinColor === '#B72712'}" class="one"></i>
-						<i @click="changeSkinColor('#1565C0')" :class="{selected: skinColor === '#1565C0'}" class="two"></i>
-						<i @click="changeSkinColor('#212121')" :class="{selected: skinColor === '#212121'}" class="three"></i>
-            			<i @click="changeSkinColor('#1B5E20')" :class="{selected: skinColor === '#1B5E20'}" class="four"></i>
-					</div>
-				</transition>
+      <div class="list">
+        <div class="icon-list"><i @click="isShowMusicList=!isShowMusicList"></i></div>
+      </div>
 
-				<div class="icon-skin" :class="{'icon-skin-red': skinColor === '#B72712','icon-skin-blue': skinColor === '#1565C0','icon-skin-black': skinColor === '#212121','icon-skin-green': skinColor === '#1B5E20'}" @click="showSkinColor">
-					
-				</div>
-			</div>
-		</div>
+    </div>
 
-		<div class="footer" :style="{backgroundColor: skinColor}">
-			<div class="prev">
-				<div class="icon-prev"><i @click="prev"></i></div>
-			</div>
-			<div class="play">
-	        	<div class="icon-play"><i @click="play" :class="[isPlaying ? 'pause-icon' : 'play-icon']"></i></div>
-	      	</div>
-	      	<div class="next">
-		        <div class="icon-next"><i @click="next"></i></div>
-	      	</div>
-		</div>
-	</div>
+    <div class="content">
+
+      <transition name="fade">
+        <div v-show="isShowMusicList" class="music-list">
+          <ul>
+            <li @click="toggleMusic(index)" v-for="(item, index) of musicData" :class="{ activeColor: index === audio.index}">{{ (index + 1) +'. &nbsp;'+ item.name}}</li>
+          </ul>
+        </div>
+      </transition>
+
+      <img @click.stop.prevent="isShowSkinColors=false;isShowMusicList=false" :src="audio.musicImgSrc || (musicData[0]&&musicData[0].musicImgSrc) || defaultImg" alt="microzz.com">
+      <div @click.stop.prevent="isShowSkinColors=false;isShowMusicList=false" class="img">
+        <img :src="audio.musicImgSrc || (musicData[0]&&musicData[0].musicImgSrc) || defaultImg" alt="microzz.com">
+      </div>
+      <div class="progress">
+        <div class="start-time">{{transformTime(now)}}</div>
+        <div @click="changeTime($event)" @touchmove="touchMove($event)" @touchend="touchEnd($event)" ref="progressBar" class="progress-bar">
+          <div ref="now" :style="{width: (now / nativeAudio.duration).toFixed(3)*100 + '%'}" class="now"></div>
+        </div>
+        <div class="end-time" v-text="totalTime"></div>
+      </div>
+      <div class="skin">
+        <transition name="slide-fade">
+          <div v-show="isShowSkinColors" class="skin-colors">
+            <i @click="changeSkinColor('#B72712')" :class="{selected: skinColor==='#B72712'}" class="one"></i>
+            <i @click="changeSkinColor('#1565C0')" :class="{selected: skinColor==='#1565C0'}" class="two"></i>
+            <i @click="changeSkinColor('#212121')" :class="{selected: skinColor==='#212121'}" class="three"></i>
+            <i @click="changeSkinColor('#1B5E20')" :class="{selected: skinColor==='#1B5E20'}" class="four"></i>
+          </div>
+        </transition>
+
+        <div @click="showSkinColor" :class="{'icon-skin-red': skinColor === '#B72712','icon-skin-blue': skinColor === '#1565C0','icon-skin-black': skinColor === '#212121','icon-skin-green': skinColor === '#1B5E20'}" class="icon-skin"></div>
+      </div>
+    </div>
+
+    <div :style="{backgroundColor: skinColor}" class="footer">
+      <div class="prev">
+        <div class="icon-prev"><i @click="prev"></i></div>
+      </div>
+      <div class="play">
+        <div class="icon-play"><i @click="play" :class="[isPlaying ? 'pause-icon' : 'play-icon']"></i></div>
+      </div>
+      <div class="next">
+        <div class="icon-next"><i @click="next"></i></div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-	export default {
-		name: 'play',
-		mounted() {
-			this.nativeAudio = document.querySelector('audio');
-			this.nativeAudio.addEventListener('play', () => {
-				this.totalTime = this.transformTime(this.nativeAudio.duration);
-				this.now = this.nativeAudio.currentTime;
-				setInterval(() => {
-					this.now = this.nativeAudio.currentTime;
-				}, 1000);
-				this.now = this.nativeAudio.currentTime;
-			})
-		},
-		computed: {
-			audio() {
-				return this.$store.state.audio;
-			},
-			musicData() {
-				return this.$store.state.musicData;
-			},
-			isPlaying() {
-				return this.$store.state.isPlaying;
-			},
-			DOM() {
-				return this.$store.state.DOM;
-			},
-			skinColor() {
-				return this.$store.state.skinColor;
-			}
-		},
-		data() {
-			return {
-				defaultImg: 'https://avatars1.githubusercontent.com/u/14293334?v=3&u=e48ddec44bf947a70029db847345d2cbffd025bf&s=400',
-				playIcons: ['url("./play.svg")', 'url("./page.svg")'],
-				now: 0,
-				nativeAudio: {},
-				totalTime: '0.00',
-				isShowSkinColors: false,
-				isShowMusicList:false
-			}
-		},
-		watch: {
-			skinColor(val) {
-				localStorage.skinColor = val;
-			}
-		},
-		methods: {
-			back() {
-				this.$store.commit('showIndex', true);
-				this.$store.commit('showMiniMusic', true);
-				this.isShowSkinColor = false;
-				this.isShowMusicList = false;
-			},
-			toggleMusic(index){
-				this.$store.commit('toggleMusic', index);
-				this.$store.commit('play', true);
-				setTimeout(() => {
-					this.isShowMusicList = false;
-				}, 100);
-			},
-			prev() {
-				this.audio.index = this.audio.index === 0 ? this.musicData.length - 1 : (--this.audio.index);
-				this.$store.commit('toggleMusic', this.audio.index);
-			},
-			play() {
-		      	this.$store.commit('play', !this.isPlaying);
-		      	!this.isPlaying ? this.DOM.audio.pause() : this.DOM.audio.play();
-		    },
-			next() {
-				this.audio.index = this.audio.index === this.musicData.length - 1 ? 0 : (--this.audio.index);
-				this.$store.commit('toggleMusic', this.sudio.index);
-			},
-			showSkinColor() {
-				this.isShowSkinColors = !this.isShowSkinColors;
+export default {
+  name: 'play',
+  mounted() {
+    this.nativeAudio = document.querySelector('audio');
+    this.nativeAudio.addEventListener('play', () => {
+      this.totalTime = this.transformTime(this.nativeAudio.duration);
+      this.now = this.nativeAudio.currentTime;
+      setInterval(() => {
+        this.now = this.nativeAudio.currentTime;
+      }, 1000);
+      this.now = this.nativeAudio.currentTime;
 
-			},
-			changeSkinColor(color) {
-		      	this.$store.commit('changeSkinColor', color);
-		      	this.isShowSkinColors = false;
-		    },
-		     changeTime(event) {
-		      let progressBar = this.$refs.progressBar;
-		      let coordStart = progressBar.getBoundingClientRect().left;
-		      let coordEnd = event.pageX;
-		      this.nativeAudio.currentTime = (coordEnd - coordStart) / progressBar.offsetWidth * this.nativeAudio.duration;
-		      this.now = this.nativeAudio.currentTime;
-		      this.nativeAudio.play();
-		      this.$store.commit('play', true);
-		    },
-		    touchMove(event) {
-		      let progressBar = this.$refs.progressBar;
-		      let coordStart = progressBar.getBoundingClientRect().left;
-		      let coordEnd = event.touches[0].pageX;
-		      this.$refs.now.style.width = ((coordEnd - coordStart) / progressBar.offsetWidth).toFixed(3) * 100 + '%';
-		    },
-		    touchEnd(event) {
-		      this.nativeAudio.currentTime = this.$refs.now.style.width.replace('%', '')/100 * this.nativeAudio.duration;
-		      this.now = this.nativeAudio.currentTime;
-		      this.nativeAudio.play();
-		      this.$store.commit('play', true);
-		    },
-		    transformTime(seconds) {
-		      let m, s;
-		      m = Math.floor(seconds / 60);
-		      m = m.toString().length == 1 ? ('0' + m) : m;
-		      s = Math.floor(seconds - 60 * m);
-		      s = s.toString().length == 1 ? ('0' + s) : s;
-		      return m + ':' + s;
-		    }
-		}
-	}
+    })
+  },
+  computed: {
+    audio() {
+      return this.$store.state.audio;
+    },
+    musicData() {
+      return this.$store.state.musicData;
+    },
+    isPlaying() {
+      return this.$store.state.isPlaying;
+    },
+    DOM() {
+      return this.$store.state.DOM;
+    },
+    skinColor() {
+      return this.$store.state.skinColor;
+    }
+  },
+  data() {
+    return {
+      defaultImg: 'https://microzz.com/img/avatar.jpg',
+      playIcons: ['url("./play.svg")', 'url("./pause.svg")'],
+      now: 0,
+      nativeAudio: {},
+      totalTime: '0:00',
+      isShowSkinColors: false,
+      isShowMusicList: false
+    }
+  },
+  watch: {
+    skinColor(val) {
+      localStorage.skinColor = val;
+    }
+  },
+  methods: {
+    back() {
+      this.$store.commit('showIndex', true);
+      this.$store.commit('showMiniMusic', true);
+      this.isShowSkinColors = false;
+      this.isShowMusicList = false
+    },
+    toggleMusic(index) {
+      this.$store.commit('toggleMusic', index);
+      this.$store.commit('play', true);
+      setTimeout(() => {
+        this.isShowMusicList = false;
+      }, 100);
+    },
+    prev() {
+      this.audio.index = this.audio.index === 0 ? this.musicData.length - 1 : (--this.audio.index);
+      this.$store.commit('toggleMusic', this.audio.index);
+    },
+    play() {
+      this.$store.commit('play', !this.isPlaying);
+      !this.isPlaying ? this.DOM.audio.pause() : this.DOM.audio.play();
+    },
+    next() {
+      this.audio.index = this.audio.index === this.musicData.length - 1 ? 0 : (++this.audio.index);
+      this.$store.commit('toggleMusic', this.audio.index);
+    },
+    showSkinColor() {
+      this.isShowSkinColors = !this.isShowSkinColors;
+    },
+    changeSkinColor(color) {
+      this.$store.commit('changeSkinColor', color);
+      this.isShowSkinColors = false;
+    },
+    changeTime(event) {
+      let progressBar = this.$refs.progressBar;
+      let coordStart = progressBar.getBoundingClientRect().left;
+      let coordEnd = event.pageX;
+      this.nativeAudio.currentTime = (coordEnd - coordStart) / progressBar.offsetWidth * this.nativeAudio.duration;
+      this.now = this.nativeAudio.currentTime;
+      this.nativeAudio.play();
+      this.$store.commit('play', true);
+    },
+    touchMove(event) {
+      let progressBar = this.$refs.progressBar;
+      let coordStart = progressBar.getBoundingClientRect().left;
+      let coordEnd = event.touches[0].pageX;
+      this.$refs.now.style.width = ((coordEnd - coordStart) / progressBar.offsetWidth).toFixed(3) * 100 + '%';
+    },
+    touchEnd(event) {
+      this.nativeAudio.currentTime = this.$refs.now.style.width.replace('%', '')/100 * this.nativeAudio.duration;
+      this.now = this.nativeAudio.currentTime;
+      this.nativeAudio.play();
+      this.$store.commit('play', true);
+    },
+    transformTime(seconds) {
+      let m, s;
+      m = Math.floor(seconds / 60);
+      m = m.toString().length == 1 ? ('0' + m) : m;
+      s = Math.floor(seconds - 60 * m);
+      s = s.toString().length == 1 ? ('0' + s) : s;
+      return m + ':' + s;
+    }
+  }
+}
 </script>
+
 <style lang="scss" scoped>
-   .play {
+
+  .play {
+
     .slide-fade-enter-active {
       transition: all .3s ease;
     }
@@ -194,6 +198,8 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
+
+
     .header {
       position: relative;
       z-index: 1;
@@ -246,6 +252,7 @@
           cursor: pointer;
         }
       }
+
     }
     .content {
       position: relative;
@@ -280,6 +287,7 @@
           color: #FF6E40;
         }
         ul {
+
           height: 100%;
           overflow-y: auto;
           background: rgba(0, 0, 0, .7);
@@ -289,6 +297,7 @@
           padding-bottom: 5px;
           box-shadow: 0 0 6px #2196F3;
           border-radius: 10px 0 0 10px;
+
           li {
             // width: 100%;
             width: 260px;
@@ -328,7 +337,6 @@
       }
       .skin {
         position: absolute;
-        z-index: 2;
         display: flex;
         flex-direction: column;
         bottom: 50px;
@@ -389,6 +397,7 @@
         .icon-skin-black {
           background-image: url('./skinBlack.svg');
         }
+
       }
       .progress {
         position: absolute;
@@ -404,6 +413,7 @@
         }
         .progress-bar {
           position: relative;
+
           width: 100%;
           height: 4px;
           background-color: rgba(255, 255, 255, .8);
@@ -411,6 +421,7 @@
           border-radius: 2px;
           flex: 4;
           cursor: pointer;
+
           .now {
             position: absolute;
             left: 0;
@@ -446,6 +457,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
         .icon-prev i{
           display: inline-block;
           background: url('./prev.png') no-repeat;
@@ -454,6 +466,7 @@
           height: 40px;
           vertical-align: bottom;
           cursor: pointer;
+
         }
       }
       .play {
@@ -496,5 +509,6 @@
         }
       }
     }
+
   }
 </style>

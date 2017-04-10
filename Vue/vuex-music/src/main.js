@@ -84,7 +84,7 @@ const store = new Vuex.Store({
       state.linkBorderIndex = index;
     },
     changeSkinColor(state, color) {
-      state.skinColor = color;
+      state.skinColor = color;   
     }
   },
   actions: {
