@@ -12,8 +12,6 @@
 			<li><button @click='insert("\n# ")'><i class="fa fa-header"></i></button></li>
 			<li><button @click='insert("\n\n---\n\n")'><i class="fa fa-underline"></i></button></li>
 			<li><button @click='insert("\n\n| title | title | title |\n| --- | --- | --- |\n| item | item | item |")'><i class="fa fa-th"></i></button></li>
-			<li><button @click='redirect("https://github.com/jrainlau/markcook")'><i class="fa fa-github"></i></button></li>
-			<li><button @click='redirect("https://github.com/jrainlau/markcook/issues")'><i class="fa fa-question"></i></button></li>
 		</ul>
 	</nav>
 </template>
